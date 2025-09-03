@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <!-- Add FontAwesome for the search icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #search-results {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .search-item {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="padding: 20px;">
+        <input type="text" id="search-input" placeholder="Search..." oninput="searchFunction()">
+        <a href="#" onclick="searchFunction()">
+            <i class="fa fa-search" style="font-size:30px;color:#000;margin-left:10px;"></i>
+        </a>
+    </div>
+
+    <div id="content" style="padding: 20px;">
+        <p class="search-item">This is the first example of text to search through.</p>
+        <p class="search-item">Another example paragraph of content to search through.</p>
+        <p class="search-item">Try searching for words in this content.</p>
+        <p class="search-item">Search results will highlight matching text.</p>
+        <p class="search-item">Try finding the word 'search' in this sentence.</p>
+    </div>
+
+    <div id="search-results"></div>
+
+    <script>
+        function searchFunction() {
+            var input, filter, content, items, i, txtValue, results;
+            input = document.getElementById('search-input');
+            filter = input.value.toUpperCase();
+            content = document.getElementById('content');
+            items = content.getElementsByClassName('search-item');
+            results = document.getElementById('search-results');
+            
+            // Clear previous results
+            results.innerHTML = '';
+
+            let firstMatchFound = false; // Flag to track the first match
+            
+            for (i = 0; i < items.length; i++) {
+                txtValue = items[i].textContent || items[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    items[i].style.display = ''; // Show matching item
+                    results.innerHTML += '<p>Found: ' + items[i].textContent + '</p>';
+                    items[i].innerHTML = highlightText(items[i].textContent, filter); // Highlight matching text
+
+                    // Scroll to the first match and stop after finding it
+                    if (!firstMatchFound) {
+                        items[i].scrollIntoView({ behavior: "smooth", block: "center" });
+                        firstMatchFound = true; // Stop scrolling after the first match
+                    }
+                } else {
+                    items[i].style.display = 'none'; // Hide non-matching item
+                }
+            }
+        }
+
+        // Function to highlight the matching text
+        function highlightText(text, searchText) {
+            var regex = new RegExp('(' + searchText + ')', 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+    </script>
+
+</body>
+</html>

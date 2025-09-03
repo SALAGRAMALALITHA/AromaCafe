@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="fresh.css">
+    <!-- <script src="c.js"></script> -->
+    <script src="cart.js"></script>
+
+<title></title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class=logo>
+            <img src="https://static.vecteezy.com/system/resources/previews/002/412/377/original/coffee-cup-logo-coffee-shop-icon-design-free-vector.jpg " alt="logo">
+        </a>
+        <nav class="navbar">
+            <a href="home.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="product.html">Products</a>
+            <a href="home.html">About</a>
+            <a href="home.html">Contact Us</a>
+            <a href="home.html">Review</a>
+        </nav>
+        <div class="icons">
+            <i class="fa fa-search" style="font-size:30px;color:#fff;margin-right:25px;"></i>
+            <a href="cart.html" style="color:#fff;"><i class='fas fa-shopping-cart' style='font-size:30px;margin-right: 25px;'></i></a>
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <a href="loginpage.html" class="material-icons" style="font-size:36px;color:#fff;margin-top:20px;">account_circle</a>
+        </div>
+    </header>
+
+    <section class="menu" id="menu">
+        <h1 class="heading">Hot Beverages</h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="https://img.freepik.com/premium-photo/hot-coffee-capuccino-cup-with-latte-art-wood-table-cafe_778722-16.jpg" alt=""><p style="color:#2a1503;font-size:xx-large;margin-top:20px;">Latte Coffee</p></img>
+                <div class="content">
+                    <h3>Latte Coffee</h3>
+                    <p>Indulge in our rich and creamy Latte Coffee, crafted with a perfect blend of smooth espresso and steamed milk. Each sip offers a balanced harmony of 
+                        bold coffee flavor and velvety texture, topped with a light layer of foam. Enjoy it in  its inviting aroma.</p>
+                    <div class="price">Rs.200 <span>Rs.299</span></div>
+                    <button onclick="addToCart('Latte Coffee', 299, 'https://img.freepik.com/premium-photo/hot-coffee-capuccino-cup-with-latte-art-wood-table-cafe_778722-16.jpg')" class="btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="https://www.frostymelts.co.za/wp-content/uploads/2022/06/Frosty-Melts-Cappuccino.jpg" alt=""> <p style="color:#2a1503;font-size:xx-large;margin-top:20px;">Cappuccino</p></img>
+                <div class="content">
+                    <h3>Cappuccino</h3>
+                    <p>This classic favorite features a robust shot of espresso, perfectly balanced with steamed milk and topped with a generous layer of frothy milk foam. 
+                        Served in a traditional 6-ounce cup,
+                        our cappuccino is ideal for a rich and flavorful coffee with a luxuriously creamy finish. Enhance your experience with a sprinkle of cocoa or cinnamon on top.</p>
+                    <div class="price">Rs.250 </div>
+                    <button onclick="addToCart('Cappuccino', 250, 'https://www.frostymelts.co.za/wp-content/uploads/2022/06/Frosty-Melts-Cappuccino.jpg')" class="btn">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="box">
+                <img src="https://media.istockphoto.com/id/174684628/photo/pouring-fresh-coffee.jpg?s=612x612&w=0&k=20&c=pXOkO9bhWVKA7s4JGtvz9aPMZzkF24noXPdXlMkTQ_A=" alt=""><p style="color:#2a1503;font-size:xx-large;margin-top:20px;">Americano</p></img>
+                <div class="content">
+                    <h3>Americano</h3>
+                    <p>Enjoy the simplicity and bold flavor of our Americano. Made with a single or double shot of our finest espresso, 
+                        this coffee offers a smooth and robust taste. The Americano is perfect for those who love the intensity of espresso but prefer a lighter, longer drink. 
+                    </p>
+                    <div class="price">Rs.270 <span>Rs.299</span></div>
+                    <button onclick="addToCart('Americano', 270, 'https://media.istockphoto.com/id/174684628/photo/pouring-fresh-coffee.jpg?s=612x612&w=0&k=20&c=pXOkO9bhWVKA7s4JGtvz9aPMZzkF24noXPdXlMkTQ_A=')" class="btn">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="box">
+                <img src="https://www.crabtreekitchen.com/media/catalog/product/cache/0fcc925f6929e143fbbf0b86b4ef8725/d/r/drinking_chocolate_square_image.jpeg" alt=""><p style="color:#2a1503;font-size:xx-large;margin-top:20px;">Hot Chocolate</p></img>
+                <div class="content">
+                    <h3>Hot Chocolate</h3>
+                    <p>Treat yourself to the ultimate comfort with our decadent Hot Chocolate. Made with high-quality cocoa or real melted chocolate, combined with steamed milk, 
+                        this drink is rich, creamy, and perfectly sweet. Topped with a swirl of whipped cream or a handful of marshmallows, our hot chocolate is a delightful 
+                        indulgence for any chocolate lover. Ideal for cozying up on a cold day or as a sweet treat anytime.</p>
+                    <div class="price">Rs.300 </div>
+                    <button onclick="addToCart('Hot Chocolate', 300, 'https://www.crabtreekitchen.com/media/catalog/product/cache/0fcc925f6929e143fbbf0b86b4ef8725/d/r/drinking_chocolate_square_image.jpeg')" class="btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="https://somuchfoodblog.com/wp-content/uploads/2022/11/irish-coffee6.jpg" alt=""><p style="color:#2a1503;font-size:xx-large;margin-top:20px;">Irish Coffee</p></img>
+                <div class="content">
+                    <h3>Irish Coffee</h3>
+                    <p>The perfect blend of warmth and flavor with our Irish Coffee. This sophisticated drink combines freshly brewed hot coffee, 
+                        smooth Irish whiskey, a touch of sugar, and a layer of lightly whipped cream. Served in a glass mug, our Irish Coffee not only tastes exquisite. 
+                        Perfect as an after-dinner treat, this drink delivers a delightful mix of rich coffee and warming whiskey with every sip.</p>
+                    <div class="price">Rs.150 <span>Rs.249</span></div>
+                    <button onclick="addToCart('Irish Coffee', 150, 'https://somuchfoodblog.com/wp-content/uploads/2022/11/irish-coffee6.jpg')" class="btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="https://t3.ftcdn.net/jpg/04/79/36/52/360_F_479365241_t5PEjmcB9EMF8nbNBzFrmbXPYNggHDNZ.jpg" alt=""><p style="color:#2a1503;font-size:xx-large;margin-top:20px;">Classic Filter Coffee</p></img>
+                <div class="content">
+                    <h3>Classic Filter Coffee</h3>
+                    <p>Savor the pure, clean taste of our Filter Coffee. Using the finest quality coffee beans,through a precise drip process,
+                        ensuring a consistently smooth and flavorful cup. Ideal for enjoying black or with a splash of milk,Enjoy it and start your day with the perfect cup every time.</p>
+                    <div class="price">Rs.120<span>Rs.150</span></div>
+                    <button onclick="addToCart('Classic Filter Coffee', 120, 'https://t3.ftcdn.net/jpg/04/79/36/52/360_F_479365241_t5PEjmcB9EMF8nbNBzFrmbXPYNggHDNZ.jpg')" class="btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+<footer class="footer" id="#">
+    <div class="row">
+    <div class="col d-flex">
+        <a href="#" >
+            <img src="https://static.vecteezy.com/system/resources/previews/002/412/377/original/coffee-cup-logo-coffee-shop-icon-design-free-vector.jpg " alt="logo" height="180" width="180"><br>
+            <a href="#"><i class="fa fa-facebook-square" style="font-size:36px"></i></a>
+            <a href="#"><i class="fa fa-twitter-square" style="font-size:36px"></i></a>
+            <a href="#"><i class="fa fa-instagram" style="font-size:36px"></i></a>
+            <a href="#"><i class="fa fa-youtube-square" style="font-size:36px"></i></a>
+            <p>2024 <a href="#"></a>. All rights reserved.</p>
+        </a>
+    </div>
+
+    <div class="col d-flex">
+        <h4>Cafe</h4>
+        <p>Coffee is cafe that serves many fvarient of coffees and other dishes with very comfort cozy place.</p><br><br>
+        <i class='fas fa-map-marker-alt' style='font-size:24px;color:white;'></i><br> <br>
+        <p>
+            INDIA<BR> VIJAYWADA<BR>65/143, GB NAGAR, NEAR BP CENTER<BR>520001.
+        </p>
+        
+    </div>
+
+    <div class="col d-flex">
+        <h4>USEFUL LINK</h4>
+        <a href="menu.html">Menu</a><br><br>
+        <a href="product.html">products</a><br><br>
+        <a href="about.html">about us</a><br><br>
+        <a href="review.html">Reviews</a><br><br>
+        <a href="#">Location</a><br><br>
+    </div>
+
+    <div class="col d-flex">
+        <h4>SUPPORT</h4>
+        <a href="#">FAOs</a><br><br>
+        <a href="#">private policy</a><br><br>
+        <a href="#">help us</a><br><br>
+        <a href="#">customer care</a><br><br>
+    </div>
+
+    <div class="col d-flex">
+        <h4>FACILITY</h4>
+        <a href="#">Meeting room</a><br><br>
+        <a href="#">private room</a><br><br>
+        <a href="#">Event room</a><br><br>
+        <a href="#">Creative studio</a><br><br>
+    </div>
+    </div>
+</footer>
+</body>
+</body>
+</html>

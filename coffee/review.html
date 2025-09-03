@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    
+    <script src="c.js"></script>
+    <title></title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    color: #333;
+}
+.container {
+    max-width: 600px;
+    margin-left: 90px; 
+    margin-top: 50px;
+    background:rgba(255, 248, 240, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 500px;
+    border:1px solid #2A1503; 
+}
+
+header, .review-form, .reviews {
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size:25px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.stars {
+            display: inline-block;
+            font-size: 24px;
+        }
+        .stars .star {
+            color: #ddd;
+            cursor: pointer;
+        }
+        .stars .star.active {
+            color: #f39c12;
+        }
+
+button {
+    display: block;
+    width: 300px;
+    background-color:#CA9E7B;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto 0 auto;
+    border:1px solid #2A1503;
+}
+
+button:hover {
+    background-color: #2A1503;
+}
+
+.reviews {
+    margin-top: 40px;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+}
+
+.review p {
+    margin: 5px 0;
+}
+
+#name, #review {
+    width:250px; 
+}
+    </style>
+</head>
+<body>
+
+    <header class="header">
+
+        <a href="#" class=logo>
+            <img src="https://static.vecteezy.com/system/resources/previews/002/412/377/original/coffee-cup-logo-coffee-shop-icon-design-free-vector.jpg " alt="logo">
+        </a>
+        
+        <nav class="navbar">
+            <a href="home.html">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#product">Products</a>
+            <a href="#review">Review</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+        <div class="icons">
+            <a href="#"><i class="fa fa-search" style="font-size:30px;color:#fff;margin-right:25px;"></i></a>
+            <a href="cart.html" style="color:#fff;"><i class='fas fa-shopping-cart' style='font-size:30px;margin-right: 25px;'></i></a>
+            <div class="fas fa-bars" id="menu-btn" style="font-size:36px;color:#fff;margin-top:20px;"></div>
+            <a href="loginpage.html" class="material-icons" style="font-size:36px;color:#fff;margin-top:20px;">account_circle</a>
+            </div>
+    </header>
+
+    <!--reviews-->
+    <section class="review" id="review"style="font-size:30px;color:#fff;margin-top: 90px;">
+        <h1 class="heading">Reviews</h1>
+        <div class="wrapper">
+            <div class="carousel" id="carousel">
+                    <div class="card">
+                        <section class="review-form">
+                            <h2>Leave a Review</h2>
+                            <form id="reviewForm">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Rating:</label>
+                                    <div class="stars" id="starRating">
+                                        <span class="star" data-value="1">&#9733;</span>
+                                        <span class="star" data-value="2">&#9733;</span>
+                                        <span class="star" data-value="3">&#9733;</span>
+                                        <span class="star" data-value="4">&#9733;</span>
+                                        <span class="star" data-value="5">&#9733;</span>
+                                    </div>
+                                    <input type="hidden" id="rating" name="rating" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="review">Review:</label>
+                                    <textarea id="review" name="review" rows="2.5" required></textarea>
+                                </div>
+                                <button type="submit">Submit Review</button>
+                            </form>
+                        </section>
+                    </div>
+
+                <div class="card">
+                    <img src="cher.jpg" alt="Handicraft 6" height="200" width="200">
+                    <h2>Rama Charitha</h2>
+                    <span>i like this coffee very much ,with good ambience,asdfghjkl;qwertyuiopzxcvbnmasdfghjkertyuikewxrdctfgvhbjnkmqwzexrdctfyvgbuhnijomk,plexrdctfvygbhnj</span>
+                </div>
+                <div class="card">
+                    <img src="coffee1.jpg" alt="Handicraft 6" height="250" width="250">
+                    <h2>Handicraft 3</h2>
+                    <span>Description 3</span>
+                </div>
+                <div class="card">
+                    <img src="lalli.jpg" alt="Handicraft 6" height="250" width="250">
+                    <h2>Handicraft 4</h2>
+                    <span>Description 4</span>
+                </div>
+                <div class="card">
+                    <img src="coffee1.jpg" alt="Handicraft 6" height="250" width="250">
+                    <h2>Handicraft 5</h2>
+                    <span>Description 5</span>
+                </div>
+                <div class="card">
+                    <img src="soni.jpg" alt="Handicraft 6" height="250" width="250">
+                    <h2>Soni</h2>
+                    <span>I tried jamun shots its very refreshing and amazing,ambience of the aroma cafe is very nice,worth going</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+<footer class="footer" id="#">
+    <div class="row">
+    <div class="col d-flex">
+        <a href="#" >
+            <img src="https://static.vecteezy.com/system/resources/previews/002/412/377/original/coffee-cup-logo-coffee-shop-icon-design-free-vector.jpg " alt="logo" height="180" width="180"><br>
+            <a href="#"><i class="fa fa-facebook-square" style="font-size:36px"></i></a>
+            <a href="#"><i class="fa fa-twitter-square" style="font-size:36px"></i></a>
+            <a href="#"><i class="fa fa-instagram" style="font-size:36px"></i></a>
+            <a href="#"><i class="fa fa-youtube-square" style="font-size:36px"></i></a>
+            <p>2024 <a href="#"></a>. All rights reserved.</p>
+        </a>
+    </div>
+
+    <div class="col d-flex">
+        <h4>Cafe</h4>
+        <p>Coffee is cafe that serves many fvarient of coffees and other dishes with very comfort cozy place.</p><br><br>
+        <i class='fas fa-map-marker-alt' style='font-size:24px;color:white;'></i><br> <br>
+        <p>
+            INDIA<BR> VIJAYWADA<BR>65/143, GB NAGAR, NEAR BP CENTER<BR>520001.
+        </p>
+        
+    </div>
+
+    <div class="col d-flex">
+        <h4>USEFUL LINK</h4>
+        <a href="menu.html">Menu</a><br><br>
+        <a href="product.html">products</a><br><br>
+        <a href="about.html">about us</a><br><br>
+        <a href="review.html">Reviews</a><br><br>
+        <a href="#">Location</a><br><br>
+    </div>
+
+    <div class="col d-flex">
+        <h4>SUPPORT</h4>
+        <a href="#">FAOs</a><br><br>
+        <a href="#">private policy</a><br><br>
+        <a href="#">help us</a><br><br>
+        <a href="#">customer care</a><br><br>
+    </div>
+
+    <div class="col d-flex">
+        <h4>FACILITY</h4>
+        <a href="#">Meeting room</a><br><br>
+        <a href="#">private room</a><br><br>
+        <a href="#">Event room</a><br><br>
+        <a href="#">Creative studio</a><br><br>
+    </div>
+    </div>
+</footer>
+</body>
+</body>
+</html>

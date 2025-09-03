@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">    
+    <script src="c.js"></script>
+    <title></title>
+    <style>
+.content{
+text-align: center;
+}
+.content h2{
+font-size: 160px;
+color: #fff;
+font-weight: 600;
+}
+.content a{
+text-decoration: none;
+display: inline-block;
+color: #fff;
+font-size: 24px;
+border: 2px solid #fff;
+padding: 14px 70px;
+margin-top: 20px;
+}
+
+.back-video{
+position: absolute;
+right: 0;
+bottom: 0;
+z-index: -1;
+}
+
+@media(min-aspect-ratio: 16/9){
+.back-video{
+width: 100%;
+height: 1200px;
+}
+}
+
+
+
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    color: #333;
+}
+.container {
+    max-width: 600px;
+    margin-left: 90px; 
+    margin-top: 50px;
+    background:rgba(255, 248, 240, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 500px;
+    border:1px solid #2A1503; 
+}
+
+header, .review-form, .reviews {
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size:25px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.stars {
+            display: inline-block;
+            font-size: 24px;
+        }
+        .stars .star {
+            color: #ddd;
+            cursor: pointer;
+        }
+        .stars .star.active {
+            color: #f39c12;
+        }
+
+button {
+    display: block;
+    width: 300px;
+    background-color:#CA9E7B;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto 0 auto;
+    border:1px solid #2A1503;
+}
+
+button:hover {
+    background-color: #2A1503;
+}
+
+.reviews {
+    margin-top: 40px;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+}
+
+.review p {
+    margin: 5px 0;
+}
+
+#name, #review {
+    width:250px; 
+}
+    </style>
+</head>
+
+<body>
+    <header class="header">
+
+        <a href="#" class=logo>
+            <img src="https://static.vecteezy.com/system/resources/previews/002/412/377/original/coffee-cup-logo-coffee-shop-icon-design-free-vector.jpg " alt="logo">
+        </a>
+        
+        <nav class="navbar">
+            <a href="home.html">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#product">Products</a>
+            <a href="#review">Review</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+        <div class="icons">
+            <input type="text" id="search-input" placeholder="Search..." oninput="searchFunction()">
+            <a href="#" onclick="searchFunction()">
+            <a href="#"><i class="fa fa-search" style="font-size:30px;color:#fff;margin-right:25px;"></i></a>
+            <a href="cart.html" style="color:#fff;"><i class='fas fa-shopping-cart' style='font-size:30px;margin-right: 25px;'></i></a>
+            <div class="fas fa-bars" id="menu-btn" style="font-size:36px;color:#fff;margin-top:20px;"></div>
+            <a href="#" onclick="logout()" class="material-icons" style="font-size:36px;color:#fff;margin-top:20px;">account_circle</a>
+            </div>
+    </header>
+
+
+    
+    <section class="slider">
+        <div class="slides">
+            <div class="slide" id="slide-1">
+                <div class="content">
+                    <h3>Fuel Your Passion</h3>
+                    <h3>Discover the Magic in Every Cup</h3>
+                    <p>Welcome to our coffee paradise, <br>
+                        where every bean tells a story and every cup sparks.
+                    </p><br>
+                    <a href="#menu" class="btn">Order Online</a>
+                </div>
+            </div>
+            <div class="slide" id="slide-2">
+                <div class="content">
+                    <h3>EVERYDAY JOY</h3>
+                    <h3>jon us on a journey through the finest selections.</h3>
+                    <p>Coffe beans, Accessories,Gift sets</p>
+                    <a href="#product" class="btn">Shop Products</a>
+                </div>
+            </div>
+            <div class="slide" id="slide-3">
+                <div class="content">
+                    <h3></h3>
+                    <h3>use code to get 10% off on your first order</h3>
+                    <p>CODE:BCJL24</p>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <i class="fas fa-arrow-left" id="prev"></i>
+            <i class="fas fa-arrow-right" id="next"></i>
+        </div>
+    </section>
+
+    <section class="menu" id="menu" style="background-color: #fff;">
+        <h1 class="heading">Menu</h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="https://www.1mg.com/articles/wp-content/uploads/2024/04/2085.jpg" alt="" >
+                <h3>Hot Beverages</h3>
+                <p style="color:#2a1503;">
+                    Wide range of Steaming hot coffees to make you fresh and light.
+                </p>
+                <a href="hot.html" class="menu-btn">Menu</a>
+            </div>
+
+            <div class="box">
+                <img src="https://meijerspecialtypharmacy.com/wp-content/uploads/2019/08/Classic-Iced-Coffee.jpg" alt="" >
+                <h3>Cold Beverages</h3>
+                <p>
+                    Creamy and frothy cold coffee to make you feel cool from inside.
+                </p>
+                <a href="cold.html" class="menu-btn">Menu</a>
+            </div>
+
+            <div class="box">
+                <img src="https://media.istockphoto.com/id/668030702/photo/set-of-three-kinds-of-gin-tonic.jpg?s=612x612&w=0&k=20&c=n2NyINsmc5Ma7_Yow2JnZJ4rk-LlYjD925bbw2NTmUA=" alt="">
+                <h3>Refreshment</h3>
+                <p>Fruit and icy refreshing drink to make you feel good.</p>
+                <a href="fresh.html" class="menu-btn">Menu</a>
+            </div>
+
+            <div class="box">
+                <img src="https://images.ctfassets.net/mmj89upnmd9d/6jGv0wPBsk7unA0nLew1xN/1375a316c0892b395b7b8d71d8838951/Coffee_Combos_4-3.jpg?fm=webp" alt="">
+                <h3>Special Combos</h3>
+                <p>
+                Now it's really easy to chose your favourite eating and drinking
+                combinations.
+                </p>
+                <a href="combo.html" class="menu-btn">Menu</a>
+            </div>
+
+            <div class="box">
+                <img src="https://wallpaper.forfun.com/fetch/7c/7c62f0071a2100ca8cca86c36ebaa598.jpeg" alt="">
+                <h3>Chocolates</h3>
+                <p>Yummy! Quick bites to satisfy your small size hunger.</p>
+                <a href="fast.html" class="menu-btn">Menu</a>
+            </div>
+
+            <div class="box">
+                <img src="https://w0.peakpx.com/wallpaper/651/638/HD-wallpaper-yummy-deserts-cool-food-yummy-entertainment-fun-desserts.jpg" alt="">
+                <h3>Desserts</h3>
+                <p>
+                This for sure would satiate your palate and take you on a
+                culinary treat.
+                </p>
+                <a href="dessert.html" class="menu-btn">Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!--products-->
+    <section class="product" id="product" style="background-color: #fff;">
+        <h1 class="heading">Products</h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="https://espresso-works.com/cdn/shop/articles/espresso-works-blog-coffee-101-robusta-coffee-1_1081x.jpg?v=1681280369" alt="" >
+                <h3>Coffee Beans</h3>
+                <p style="color:#2a1503;">
+                    Wide range of Steaming hot coffees to make you fresh and light.
+                </p>
+                <a href="beans.html" class="product-btn">Shop Now</a>
+            </div>
+
+            <div class="box">
+                <img src="https://imgshopimages.lbb.in/catalog/product/t/c/tc9_tc10_tc11.jpg" alt="" >
+                <h3>Accessories</h3>
+                <p>
+                    Creamy and frothy cold coffee to make you feel cool from inside.
+                </p>
+                <a href="accessories.html" class="product-btn">Shop Now</a>
+            </div>
+
+            <div class="box">
+                <img src="https://www.boxupgifting.com/cdn/shop/files/DSC02249.jpg?v=1685082202" alt="">
+                <h3>Gifts</h3>
+                <p>Gift your special ones amazing products</p>
+                <a href="gifts.html" class="product-btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!--reviews-->
+    <section class="review" id="review">
+        <h1 class="heading">Reviews</h1>
+        <div class="wrapper">
+            <div class="carousel" id="carousel">
+                    <div class="card">
+                        <section class="review-form">
+                            <h2>Leave a Review</h2>
+                            <form id="reviewForm">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Rating:</label>
+                                    <div class="stars" id="starRating">
+                                        <span class="star" data-value="1">&#9733;</span>
+                                        <span class="star" data-value="2">&#9733;</span>
+                                        <span class="star" data-value="3">&#9733;</span>
+                                        <span class="star" data-value="4">&#9733;</span>
+                                        <span class="star" data-value="5">&#9733;</span>
+                                    </div>
+                                    <input type="hidden" id="rating" name="rating" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="review">Review:</label>
+                                    <textarea id="review" name="review" rows="2.5" required></textarea>
+                                </div>
+                                <button type="submit">Submit Review</button>
+                            </form>
+                        </section>
+                    </div>
+                <div class="card">
+                    <img src="cher.jpg" alt="Handicraft 6" height="250" width="250">
+                    <h2>Rama Charitha</h2>
+                    <span>Incredilbe varities and super customer service</span>
+                </div>
+                <div class="card">
+                    <img src="lalli.jpg" alt="Handicraft 6" height="250" width="250">
+                    <h2>S.Lalitha</h2>
+                    <span>The ethically sourced beans make a noticable difference in taste and quality.I'm hooked!</span>
+                </div>
+                <div class="card">
+                    <img src="bunny.jpg" alt="Handicraft 6" height="250" width="250">
+                    <h2>Bhavani</h2>
+                    <span>from the moment the bag i knew i was in for a treat, the freshness of the beans is unmatched a taste is consistently exceptional,this is now my go to place for coffee.</span>
+                </div>
+
+                <div class="card">
+                    <img src="sam.jpg" alt="Handicraft 6" height="200" width="200">
+                    <h2>Sampath sai</h2>
+                    <span> I have tried many different cafes but this one stands out,the flavour profile is rich and well balanced.</span>
+                </div>
+
+                <div class="card">
+                    <img src="soni.jpg" alt="Handicraft 6" height="250" width="250">
+                    <h2>Soni</h2>
+                    <span>I tried jamun shots its very refreshing and amazing,ambience of the aroma cafe is very nice,worth going</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Why Us Section -->
+    <section class="about_us" id="about">
+        <h1 class="heading">Why Us?</h1>
+        <div class="section_container">
+            <div class="about_container">
+                <div class="about_items">
+                    <img src="abt1.jpg" alt="Delicious" />
+                    <div class="about_us_text">
+                        <h3>Delicious Food</h3>
+                        <p>With a lavish spread of finger licking food, we serve to satisfy
+                            your palate and take you on a culinary treat.
+                        </p>
+                    </div>
+                </div>
+                <div class="about_items">
+                    <img src="abt2.jpg" alt="Pleasant" />
+                    <div class="about_us_text">
+                        <h3>Pleasant Ambience</h3>
+                        <p>We seek to serve all our guests with the perfect dining
+                            experience. We provide perfect ambbience to cherish special moments.
+                        </p>
+                    </div>
+                </div>
+                <div class="about_items">
+                    <img src="abt3.jpg" alt="Hospitality" />
+                    <div class="about_us_text">
+                        <h3>Hospitality</h3>
+                        <p>Our staff members are happy to help. We go the extra mile to make you happy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact_us" id="contact">
+        <h1 class="heading">Contact Us</h1>
+        <div class="section_container">
+            <div class="contact_container">
+                <div class="contact_info">
+                    <div class="contact_items">
+                        <i class="bx bxs-map"></i>
+                        <h3>Location</h3>
+                        <p>
+                            <a href="#">1/30 & 1/30 A, IndraKeeladri, Vijayawada, Andhra Pradesh-520010</a>
+                        </p>
+                    </div>
+                    <div class="contact_items">
+                        <i class="bx bxs-phone-call"></i>
+                        <h3>Call</h3>
+                        <p><a href="#">+91 12345 67890</a></p>
+                    </div>
+                    <div class="contact_items">
+                        <i class="bx bxs-envelope"></i>
+                        <h3>Email</h3>
+                        <p><a href="#">info@coffee.com</a></p>
+                    </div>
+                    <div class="contact_items">
+                        <i class="bx bxs-time-five"></i>
+                        <h3>Hours</h3>
+                        <p>Mon-Sun: 8:00 AM - 10:00 PM</p>
+                    </div>
+                </div>
+                <div class="contact_form">
+                    <form action="#">
+                        <input type="text" placeholder="Your Name" />
+                        <input type="email" placeholder="Email Address" />
+                        <input type="tel" placeholder="Phone Number" />
+                        <textarea rows="3" placeholder="Your Message"></textarea>
+                        <button type="submit" class="button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer Section -->
+<footer class="footer" id="#">
+        <div class="row">
+        <div class="col d-flex">
+            <a href="#" >
+                <img src="https://static.vecteezy.com/system/resources/previews/002/412/377/original/coffee-cup-logo-coffee-shop-icon-design-free-vector.jpg " alt="logo" height="180" width="180"><br>
+                <a href="#"><i class="fa fa-facebook-square" style="font-size:36px"></i></a>
+                <a href="#"><i class="fa fa-twitter-square" style="font-size:36px"></i></a>
+                <a href="#"><i class="fa fa-instagram" style="font-size:36px"></i></a>
+                <a href="#"><i class="fa fa-youtube-square" style="font-size:36px"></i></a>
+                <p>2024 <a href="#"></a>. All rights reserved.</p>
+            </a>
+        </div>
+
+        <div class="col d-flex">
+            <h4>Cafe</h4>
+            <p>Coffee is cafe that serves many fvarient of coffees and other dishes with very comfort cozy place.</p><br><br>
+            <i class='fas fa-map-marker-alt' style='font-size:24px;color:white;'></i><br> <br>
+            <p>
+                INDIA<BR> VIJAYWADA<BR>65/143, GB NAGAR, NEAR BP CENTER<BR>520001.
+            </p>
+            
+        </div>
+
+        <div class="col d-flex">
+            <h4>USEFUL LINK</h4>
+            <a href="#menu">Menu</a><br><br>
+            <a href="#product">products</a><br><br>
+            <a href="#about">about us</a><br><br>
+            <a href="#review">Reviews</a><br><br>
+            <a href="#">Location</a><br><br>
+        </div>
+
+        <div class="col d-flex">
+            <h4>SUPPORT</h4>
+            <a href="#">FAOs</a><br><br>
+            <a href="#">private policy</a><br><br>
+            <a href="#">help us</a><br><br>
+            <a href="#">customer care</a><br><br>
+        </div>
+
+        <div class="col d-flex">
+            <h4>FACILITY</h4>
+            <a href="#">Meeting room</a><br><br>
+            <a href="#">private room</a><br><br>
+            <a href="#">Event room</a><br><br>
+            <a href="#">Creative studio</a><br><br>
+        </div>
+        </div>
+</footer>
+<script>
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating');
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = star.getAttribute('data-value');
+                ratingInput.value = value; // Set the hidden rating input value
+                stars.forEach(s => s.classList.remove('active'));
+                star.classList.add('active');
+            });
+        });
+
+        // JavaScript for form submission
+        const form = document.getElementById('reviewForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const name = document.getElementById('name').value;
+            const rating = document.getElementById('rating').value;
+            const review = document.getElementById('review').value;
+
+            // You can customize the alert message or use another method (e.g., AJAX) for submitting data
+            alert(`Thank you, ${name}! Your review with rating ${rating} has been submitted.`);
+            form.reset(); // Optionally reset the form after submission
+        });
+    </script>
+    
+    <!--review stars-->
+    <script>document.addEventListener('DOMContentLoaded', () => {
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating');
+    
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const ratingValue = star.getAttribute('data-value');
+                ratingInput.value = ratingValue;
+    
+                stars.forEach(s => {
+                    s.classList.toggle('selected', s.getAttribute('data-value') <= ratingValue);
+                });
+            });
+        });
+    });
+    </script>
+    <script>
+        function logout() {
+            const confirmLogout = confirm("Are you sure you want to log out?");
+            if (confirmLogout) {
+                // Redirect to the logout page or perform logout actions
+                window.location.href = 'loginpage.html'; // Replace with your actual logout URL
+            }
+        }
+    </script>
+</body>
+</html>

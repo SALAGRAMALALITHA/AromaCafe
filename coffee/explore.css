@@ -1,0 +1,79 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.hero {
+    background: url('https://wallpapercave.com/wp/wp2352852.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px 40px;
+    border-radius: 8px;
+}
+
+h1.welcome {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2.5em;
+    margin: 0;
+    animation: fadeInSlideDown 2s ease forwards;
+}
+
+h2.aroma{
+    font-size: 3em;
+    margin: 10px 0;
+    animation: fadeInSlideUp 2s ease forwards;
+    animation-delay: 1s;
+}
+
+p {
+    font-size:50px;
+    margin: 20px 0;
+    line-height: 1.5;
+    font-family: "Times New Roman", Times, serif;
+}
+
+button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+@keyframes fadeInSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
