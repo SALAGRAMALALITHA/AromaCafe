@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js"></script>
+    <title>Chocolates - Aroma Cafe</title>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <section class="menu" id="menu" style="margin-top:100px;">
+        <h1 class="heading">Chocolates</h1>
+        <div class="box-container">
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://t4.ftcdn.net/jpg/03/16/08/53/360_F_316085312_uwMeXhbWuyt9B4sTkChWY7QqcuASNtN8.jpg" alt="">
+                </div>
+                <p class="product-name">White Chocolate</p>
+                <div class="price">Rs.99 </div>
+                <div class="desc-panel">
+                    <p>Smooth and creamy white chocolate made with the finest cocoa butter, milk solids and vanilla. Delightfully sweet with a melt-in-your-mouth texture — a classic indulgence for all chocolate lovers.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('White Chocolate',99,'https://t4.ftcdn.net/jpg/03/16/08/53/360_F_316085312_uwMeXhbWuyt9B4sTkChWY7QqcuASNtN8.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://images.pexels.com/photos/1854664/pexels-photo-1854664.jpeg?cs=srgb&amp;dl=pexels-elli-559179-1854664.jpg&amp;fm=jpg" alt="">
+                </div>
+                <p class="product-name">Milk Chocolate</p>
+                <div class="price">Rs.100 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>Rich and velvety milk chocolate crafted with premium cocoa and fresh milk for a perfectly balanced sweetness. A timeless favourite that pairs beautifully with any hot or cold beverage.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Milk Chocolate',100,'https://images.pexels.com/photos/1854664/pexels-photo-1854664.jpeg?cs=srgb&amp;dl=pexels-elli-559179-1854664.jpg&amp;fm=jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://media.istockphoto.com/id/1400452697/photo/dark-chocolate-bar-with-cocoa-beans.webp?b=1&amp;s=170667a&amp;w=0&amp;k=20&amp;c=NYCJlF6CGk1D7gQnpXW8Pc82NXZCOurDZ2cevhtv5cg=" alt="">
+                </div>
+                <p class="product-name">Dark Chocolate</p>
+                <div class="price">Rs.120 </div>
+                <div class="desc-panel">
+                    <p>Intensely rich dark chocolate with a deep cocoa flavour and a satisfying snap. Made from single-origin beans, it&#39;s the perfect bittersweet treat for serious chocolate enthusiasts.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Dark Chocolate',120,'https://media.istockphoto.com/id/1400452697/photo/dark-chocolate-bar-with-cocoa-beans.webp?b=1&amp;s=170667a&amp;w=0&amp;k=20&amp;c=NYCJlF6CGk1D7gQnpXW8Pc82NXZCOurDZ2cevhtv5cg=');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://taigachocolate.com/cdn/shop/products/ruby-chocolate-with-raspberries-100g-ruby-chocolate-taiga-chocolate-328563_1000x1000.jpg?v=1594995970" alt="">
+                </div>
+                <p class="product-name">Ruby Chocolate</p>
+                <div class="price">Rs.199 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>A rare and naturally pink chocolate with a unique fruity, berry-like flavour. Made from specially processed ruby cocoa beans — no added colours or fruit flavouring. A truly extraordinary experience.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Ruby Chocolate',199,'https://taigachocolate.com/cdn/shop/products/ruby-chocolate-with-raspberries-100g-ruby-chocolate-taiga-chocolate-328563_1000x1000.jpg?v=1594995970');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.dessarts.com/wp-content/uploads/2019/04/Chocolate-Sauce_720px2.jpg" alt="">
+                </div>
+                <p class="product-name">Chocolate Syrup</p>
+                <div class="price">Rs.180 </div>
+                <div class="desc-panel">
+                    <p>A rich, glossy chocolate syrup made from premium cocoa — perfect for drizzling over ice creams, waffles, pancakes, or stirring into your favourite beverages. Indulgent in every drop.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Chocolate Syrup',180,'https://www.dessarts.com/wp-content/uploads/2019/04/Chocolate-Sauce_720px2.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://assets.winni.in/product/primary/2022/2/57895.jpeg?dpr=1&amp;w=600" alt="">
+                </div>
+                <p class="product-name">Assorted Chocolates</p>
+                <div class="price">Rs.199 </div>
+                <div class="desc-panel">
+                    <p>A delightful curated box of mixed chocolates — dark, milk, white, and ruby — each with its own unique character. Perfect as a gift or a treat for yourself when you simply cannot choose just one.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Assorted Chocolates',199,'https://assets.winni.in/product/primary/2022/2/57895.jpeg?dpr=1&amp;w=600');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+</body>
+</html>

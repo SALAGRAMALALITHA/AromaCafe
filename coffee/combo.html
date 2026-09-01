@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js"></script>
+    <title>Special Combos - Aroma Cafe</title>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <section class="menu" id="menu" style="margin-top:100px;">
+        <h1 class="heading">Special Combos</h1>
+        <div class="box-container">
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://i.pinimg.com/736x/a9/11/b8/a911b80b317907948564413de7d74499.jpg" alt="">
+                </div>
+                <p class="product-name">Coffee &amp; Cake</p>
+                <div class="price">Rs.299 </div>
+                <div class="desc-panel">
+                    <p>Your choice of any hot or cold coffee paired with a slice of our freshly baked cake of the day. A match made in heaven — the ultimate cafe indulgence for every occasion.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Coffee &amp; Cake',299,'https://i.pinimg.com/736x/a9/11/b8/a911b80b317907948564413de7d74499.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.shutterstock.com/image-photo/breakfast-view-bunch-croissant-cup-600nw-2273006551.jpg" alt="">
+                </div>
+                <p class="product-name">Coffee &amp; Croissant</p>
+                <div class="price">Rs.299 </div>
+                <div class="desc-panel">
+                    <p>A warm, buttery, flaky croissant alongside your favourite coffee — the classic European breakfast combo. Perfectly paired for a relaxed morning or a productive work session.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Coffee &amp; Croissant',299,'https://www.shutterstock.com/image-photo/breakfast-view-bunch-croissant-cup-600nw-2273006551.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://img.freepik.com/premium-photo/enjoy-your-mornings-with-delightful-combination-cup-coffee-freshly-baked-cookies-plate-steaming-hot-cup-coffee-paired-with-chocolate-chip-cookie-ai-generated_538213-14456.jpg" alt="">
+                </div>
+                <p class="product-name">Coffee &amp; Cookie</p>
+                <div class="price">Rs.299 </div>
+                <div class="desc-panel">
+                    <p>A freshly brewed coffee served with two of our homemade cookies — chocolate chip, oatmeal raisin, or almond crunch. Simple pleasures, perfectly together.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Coffee &amp; Cookie',299,'https://img.freepik.com/premium-photo/enjoy-your-mornings-with-delightful-combination-cup-coffee-freshly-baked-cookies-plate-steaming-hot-cup-coffee-paired-with-chocolate-chip-cookie-ai-generated_538213-14456.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" alt="">
+                </div>
+                <p class="product-name">Coffee &amp; Sandwich</p>
+                <div class="price">Rs.349 </div>
+                <div class="desc-panel">
+                    <p>A hearty grilled sandwich — your choice of veg or classic fillings — paired with any coffee. A satisfying combo for a quick lunch or a leisurely brunch break.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Coffee &amp; Sandwich',349,'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400" alt="">
+                </div>
+                <p class="product-name">Coffee &amp; Dessert</p>
+                <div class="price">Rs.379 </div>
+                <div class="desc-panel">
+                    <p>End your meal on a high note — any coffee of your choice paired with our dessert of the day. Whether it&#39;s a brownie, cheesecake, or tart, this combo hits every time.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Coffee &amp; Dessert',379,'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400" alt="">
+                </div>
+                <p class="product-name">Friends Combo (2 Coffees)</p>
+                <div class="price">Rs.449 <span>Rs.499</span></div>
+                <div class="desc-panel">
+                    <p>Two coffees of your choice plus a shared snack plate. Perfect for catch-ups, meetings, or a cozy afternoon with a friend. Great value, even better memories.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Friends Combo (2 Coffees)',449,'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+</body>
+</html>

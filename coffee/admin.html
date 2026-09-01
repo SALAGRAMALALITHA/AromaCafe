@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Aroma Cafe</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js" defer></script>
+
+    <style>
+        .admin-wrap { max-width: 1100px; margin: 120px auto 60px; padding: 0 20px; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+        .admin-header h1 { color: var(--primary-color); font-size: 1.8rem; }
+        .admin-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+        .stat-card { background: #fff; border: var(--border); border-radius: 10px; padding: 18px 24px; flex: 1; min-width: 140px; }
+        .stat-card .stat-value { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); }
+        .stat-card .stat-label { font-size: 0.85rem; color: #888; margin-top: 4px; }
+
+        .filter-row { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; }
+        .filter-row button {
+            padding: 8px 16px; border: 1.5px solid #e0c9b0; border-radius: 20px;
+            background: #fff; color: var(--primary-color); cursor: pointer; font-size: 0.88rem;
+        }
+        .filter-row button.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+
+        .admin-search {
+            flex: 1; min-width: 220px; padding: 10px 14px; border: 1.5px solid #e0c9b0; border-radius: 8px;
+            font-size: 0.95rem; color: var(--primary-color);
+        }
+        .admin-sort {
+            padding: 9px 12px; border: 1.5px solid #e0c9b0; border-radius: 8px;
+            background: #fff; color: var(--primary-color); font-size: 0.9rem; min-width: 160px;
+        }
+
+        .admin-order-card { background: #fff; border: var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 14px; }
+        .admin-order-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+        .admin-order-customer { font-size: 0.9rem; color: #555; margin-bottom: 10px; }
+        .admin-order-customer strong { color: var(--primary-color); }
+        .admin-order-items { font-size: 0.88rem; color: #444; margin-bottom: 10px; }
+        .admin-order-items div { padding: 2px 0; }
+        .admin-order-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid #eee; padding-top: 10px; }
+        .admin-order-total { font-weight: 700; color: var(--primary-color); }
+        .status-select {
+            padding: 7px 12px; border-radius: 6px; border: 1.5px solid #ccc; font-size: 0.88rem;
+            background: #fff; color: var(--primary-color); cursor: pointer;
+        }
+        .empty-state { text-align: center; color: #888; padding: 40px 10px; }
+        .access-denied { text-align: center; padding: 100px 20px; color: var(--primary-color); }
+    </style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<div class="admin-wrap" id="adminWrap" style="display:none;">
+    <div class="admin-header">
+        <h1><i class="fas fa-gauge"></i> Admin Panel</h1>
+    </div>
+
+    <div class="admin-stats" id="adminStats"></div>
+
+    <div class="filter-row" id="statusFilters">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="placed">Placed</button>
+        <button data-filter="shipped">Shipped</button>
+        <button data-filter="delivered">Delivered</button>
+        <button data-filter="cancelled">Cancelled</button>
+        <input type="search" id="adminSearch" class="admin-search" placeholder="Search customer, email, order ID or item…">
+        <select id="adminSort" class="admin-sort">
+            <option value="date-desc">Newest first</option>
+            <option value="date-asc">Oldest first</option>
+            <option value="total-desc">Total: high to low</option>
+            <option value="total-asc">Total: low to high</option>
+        </select>
+    </div>
+
+    <div id="adminOrderList"></div>
+</div>
+
+<div id="accessDenied" class="access-denied" style="display:none;">
+    <i class="fas fa-lock" style="font-size:48px;opacity:0.3;"></i>
+    <h2 style="margin-top:16px;">Admin access only</h2>
+    <p style="margin-top:8px;color:#888;">You don't have permission to view this page.</p>
+    <a href="home.html" style="display:inline-block;margin-top:20px;padding:10px 28px;background:#2a1503;color:#fff;border-radius:6px;text-decoration:none;">Back to Home</a>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', async function () {
+
+  const user = await getCurrentUser();
+
+  if (!user) {
+    window.location.href = 'loginpage.html';
+    return;
+  }
+  if (user.role !== 'admin') {
+    document.getElementById('accessDenied').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('adminWrap').style.display = 'block';
+
+  let allOrders = [];
+  let currentFilter = 'all';
+  let currentSearch = '';
+  let currentSort = 'date-desc';
+
+  function renderStats() {
+    const total = allOrders.length;
+    const revenue = allOrders.reduce((s, o) => s + o.total, 0);
+    const pending = allOrders.filter(o => o.status === 'placed').length;
+    const shipped = allOrders.filter(o => o.status === 'shipped').length;
+    const delivered = allOrders.filter(o => o.status === 'delivered').length;
+    const cancelled = allOrders.filter(o => o.status === 'cancelled').length;
+
+    document.getElementById('adminStats').innerHTML = `
+      <div class="stat-card">
+        <div class="stat-value">${total}</div>
+        <div class="stat-label">Total Orders</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">Rs.${revenue}</div>
+        <div class="stat-label">Total Revenue</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">${pending}</div>
+        <div class="stat-label">Placed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">${shipped}</div>
+        <div class="stat-label">Shipped</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">${delivered}</div>
+        <div class="stat-label">Delivered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">${cancelled}</div>
+        <div class="stat-label">Cancelled</div>
+      </div>
+    `;
+  }
+
+  function matchesSearch(order, term) {
+    if (!term) return true;
+    const raw = term.toLowerCase();
+    const idMatch = order._id.toLowerCase().includes(raw) ||
+                    order._id.slice(-6).toLowerCase().includes(raw);
+    const customerMatch = (order.user?.name || '').toLowerCase().includes(raw) ||
+                          (order.user?.email || '').toLowerCase().includes(raw) ||
+                          (order.user?.phone || '').toLowerCase().includes(raw);
+    const addressMatch = Object.values(order.address || {}).some(v =>
+      String(v).toLowerCase().includes(raw)
+    );
+    const itemMatch = (order.items || []).some(i =>
+      i.name.toLowerCase().includes(raw)
+    );
+    return idMatch || customerMatch || addressMatch || itemMatch;
+  }
+
+  function sortOrders(orders, sortBy) {
+    const sorted = [...orders];
+    switch (sortBy) {
+      case 'date-asc':  return sorted.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+      case 'date-desc': return sorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      case 'total-asc':  return sorted.sort((a, b) => a.total - b.total);
+      case 'total-desc': return sorted.sort((a, b) => b.total - a.total);
+      default: return sorted;
+    }
+  }
+
+  function getFilteredOrders() {
+    let filtered = allOrders;
+    if (currentFilter !== 'all') {
+      filtered = filtered.filter(o => o.status === currentFilter);
+    }
+    if (currentSearch.trim()) {
+      filtered = filtered.filter(o => matchesSearch(o, currentSearch.trim()));
+    }
+    return sortOrders(filtered, currentSort);
+  }
+
+  function renderOrders() {
+    const list = document.getElementById('adminOrderList');
+    const filtered = getFilteredOrders();
+
+    if (!filtered.length) {
+      list.innerHTML = '<p class="empty-state">No orders match this filter.</p>';
+      return;
+    }
+
+    list.innerHTML = filtered.map(o => `
+      <div class="admin-order-card">
+        <div class="admin-order-top">
+          <strong>Order #${o._id.slice(-6).toUpperCase()}</strong>
+          <span class="status-badge status-${o.status}">${o.status}</span>
+          <span style="color:#888;font-size:0.85rem;">${new Date(o.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+        </div>
+        <div class="admin-order-customer">
+          <strong>${escapeHtml(o.user?.name || 'Unknown')}</strong> — ${escapeHtml(o.user?.email || 'N/A')}<br>
+          ${escapeHtml(o.address?.label || '')}: ${escapeHtml(o.address?.line1 || '')}, ${escapeHtml(o.address?.city || '')}, ${escapeHtml(o.address?.state || '')} - ${escapeHtml(o.address?.pincode || '')}
+        </div>
+        <div class="admin-order-items">
+          ${o.items.map(i => `<div>${escapeHtml(i.name)} × ${i.qty} — Rs.${i.price * i.qty}</div>`).join('')}
+        </div>
+        <div class="admin-order-footer">
+          <span class="admin-order-total">Total: Rs.${o.total}</span>
+          <select class="status-select" data-order-id="${o._id}">
+            <option value="placed" ${o.status === 'placed' ? 'selected' : ''}>Placed</option>
+            <option value="shipped" ${o.status === 'shipped' ? 'selected' : ''}>Shipped</option>
+            <option value="delivered" ${o.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+            <option value="cancelled" ${o.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+          </select>
+        </div>
+      </div>
+    `).join('');
+
+    list.querySelectorAll('.status-select').forEach(sel => {
+      sel.addEventListener('change', async () => {
+        const orderId = sel.dataset.orderId;
+        const newStatus = sel.value;
+        sel.disabled = true;
+        try {
+          const updated = await updateOrderStatus(orderId, newStatus);
+          const idx = allOrders.findIndex(o => o._id === orderId);
+          if (idx !== -1) allOrders[idx] = updated;
+          showToast('Order status updated to "' + newStatus + '"', 'success');
+          renderStats();
+          renderOrders();
+        } catch (err) {
+          showToast('Could not update status: ' + err.message, 'error');
+          sel.disabled = false;
+        }
+      });
+    });
+  }
+
+  async function loadOrders() {
+    document.getElementById('adminOrderList').innerHTML = '<p class="empty-state">Loading orders…</p>';
+    try {
+      allOrders = await getAllOrders();
+      renderStats();
+      renderOrders();
+    } catch (err) {
+      showToast('Could not load orders: ' + err.message, 'error');
+    }
+  }
+
+  document.querySelectorAll('#statusFilters button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#statusFilters button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderOrders();
+    });
+  });
+
+  const searchInput = document.getElementById('adminSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', e => {
+      currentSearch = e.target.value;
+      renderOrders();
+    });
+  }
+
+  const sortSelect = document.getElementById('adminSort');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', e => {
+      currentSort = e.target.value;
+      renderOrders();
+    });
+  }
+
+  await loadOrders();
+
+});
+</script>
+
+</body>
+</html>

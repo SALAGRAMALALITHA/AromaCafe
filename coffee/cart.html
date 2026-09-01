@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Aroma Cafe</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js" defer></script>
+
+    <style>
+        .cart-page-wrapper { margin-top: 110px; padding: 20px 7%; min-height: 60vh; }
+        .cart-layout { display: flex; gap: 30px; flex-wrap: wrap; }
+        .cart-items-col { flex: 2; min-width: 280px; }
+        .cart-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); padding: 24px; }
+        .cart-card + .cart-card { margin-top: 24px; }
+        .cart-summary-col { flex: 1; min-width: 240px; }
+        .cart-summary-col .cart-card { height: fit-content; position: sticky; top: 120px; }
+        .cart-card h2 { color: #2a1503; border-bottom: 2px solid #f3961c; padding-bottom: 10px; margin-bottom: 16px; font-size: 1.4rem; }
+        .summary-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 1rem; color: #555; }
+        .summary-row.total { font-weight: bold; color: #2a1503; font-size: 1.2rem; border-top: 2px solid #eee; margin-top: 8px; padding-top: 12px; }
+        #checkout-btn { width: 100%; margin-top: 16px; padding: 14px; background: #2a1503; color: #fff; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: background 0.3s; }
+        #checkout-btn:hover { background: #f3961c; color: #2a1503; }
+        .continue-link { display: block; text-align: center; margin-top: 12px; color: #2a1503; font-size: 0.95rem; }
+        h1.page-title { color: #2a1503; font-size: 2.2rem; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<div class="cart-page-wrapper">
+    <h1 class="page-title">🛒 Shopping Cart</h1>
+    <div class="cart-layout">
+
+        <div class="cart-items-col">
+            <div class="cart-card">
+                <div id="cart-items-list">
+                    <!-- Rendered by c.js renderCartPage() -->
+                </div>
+            </div>
+
+            <div class="cart-card" id="addressSection">
+                <h2>Delivery Address</h2>
+                <div id="addressOptionsList">
+                    <!-- Rendered by c.js renderAddressSelector() -->
+                </div>
+
+                <div class="add-address-btn" id="showAddAddressCart">+ Add a New Address</div>
+
+                <form class="address-form" id="inlineAddressForm">
+                    <div class="address-form-grid">
+                        <div>
+                            <label for="ca-label">Label (e.g. Home, Work)</label>
+                            <input type="text" id="ca-label" required>
+                        </div>
+                        <div>
+                            <label for="ca-city">City</label>
+                            <input type="text" id="ca-city" required>
+                        </div>
+                        <div class="full">
+                            <label for="ca-line1">Address Line 1</label>
+                            <input type="text" id="ca-line1" required>
+                        </div>
+                        <div class="full">
+                            <label for="ca-line2">Address Line 2 (optional)</label>
+                            <input type="text" id="ca-line2">
+                        </div>
+                        <div>
+                            <label for="ca-state">State</label>
+                            <input type="text" id="ca-state" required>
+                        </div>
+                        <div>
+                            <label for="ca-pincode">Pincode</label>
+                            <input type="text" id="ca-pincode" required>
+                        </div>
+                    </div>
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="ca-default">
+                        <label for="ca-default">Set as default address</label>
+                    </div>
+                    <div class="address-form-actions">
+                        <button type="submit" class="save-btn"
+                                style="padding:10px 24px;background:var(--primary-color);color:#fff;border:none;border-radius:7px;cursor:pointer;">
+                            Save Address
+                        </button>
+                        <button type="button" class="cancel-btn" id="cancelAddressCart">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="cart-summary-col">
+            <div class="cart-card">
+                <h2>Order Summary</h2>
+                <div class="summary-row">
+                    <span>Subtotal</span><span id="cart-page-total">Rs. 0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery</span><span style="color:green;">FREE</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span><span id="cart-page-total-2">Rs. 0</span>
+                </div>
+                <button id="checkout-btn">Checkout Now</button>
+                <a href="home.html" class="continue-link">← Continue Shopping</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+    // Sync both total displays
+    document.addEventListener('DOMContentLoaded', function() {
+        const t1 = document.getElementById('cart-page-total');
+        const t2 = document.getElementById('cart-page-total-2');
+        const observer = new MutationObserver(() => { if (t2) t2.textContent = t1.textContent; });
+        if (t1) observer.observe(t1, { childList: true, characterData: true, subtree: true });
+        setTimeout(() => { if (t2 && t1) t2.textContent = t1.textContent; }, 100);
+    });
+</script>
+
+</body>
+</html>

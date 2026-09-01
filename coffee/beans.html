@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js"></script>
+    <title>Coffee Beans - Aroma Cafe</title>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <section class="menu" id="menu" style="margin-top:100px;">
+        <h1 class="heading">Coffee Beans</h1>
+        <div class="box-container">
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://d3kgrlupo77sg7.cloudfront.net/media/chococoorgspice.com/images/products/coorg-arabica-roasted-coffee-beans.20231001174407.webp" alt="">
+                </div>
+                <p class="product-name">Arabica Coffee Beans</p>
+                <div class="price">Rs.185 </div>
+                <div class="desc-panel">
+                    <p>Medium roast with notes of caramel and fruit. Costa Rica Tarrazu ground coffee. Hand-carved wooden scoop included.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Arabica Coffee Beans',185,'https://d3kgrlupo77sg7.cloudfront.net/media/chococoorgspice.com/images/products/coorg-arabica-roasted-coffee-beans.20231001174407.webp');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://delzing.com/wp-content/uploads/2022/10/Pure-Filter-coffee-powder.jpeg" alt="">
+                </div>
+                <p class="product-name">Filter Coffee Powder</p>
+                <div class="price">Rs.200 </div>
+                <div class="desc-panel">
+                    <p>Pure and aromatic filter coffee powder. Perfect for your morning ritual, sourced from the finest estates.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Filter Coffee Powder',200,'https://delzing.com/wp-content/uploads/2022/10/Pure-Filter-coffee-powder.jpeg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://coffeeaffection.com/wp-content/uploads/2023/03/liberica-coffee-beans_eanjoseph_Shutterstock.jpg" alt="">
+                </div>
+                <p class="product-name">Liberica Coffee Beans</p>
+                <div class="price">Rs.250 </div>
+                <div class="desc-panel">
+                    <p>Rare and unique beans with a rich, woody aroma. Notes of dark chocolate and light floral hints.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Liberica Coffee Beans',250,'https://coffeeaffection.com/wp-content/uploads/2023/03/liberica-coffee-beans_eanjoseph_Shutterstock.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+</body>
+</html>

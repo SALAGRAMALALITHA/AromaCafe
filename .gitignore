@@ -1,0 +1,19 @@
+# Dependencies
+aromacafe-backend/node_modules
+
+# Environment variables
+aromacafe-backend/.env
+coffee/.env
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

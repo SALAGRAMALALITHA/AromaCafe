@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js"></script>
+    <title>Desserts - Aroma Cafe</title>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <section class="menu" id="menu" style="margin-top:100px;">
+        <h1 class="heading">Desserts</h1>
+        <div class="box-container">
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://simplyhomecooked.com/wp-content/uploads/2018/02/Nutella-croissants-recipe-3.jpg" alt="">
+                </div>
+                <p class="product-name">Nutella Croissant</p>
+                <div class="price">Rs.200 </div>
+                <div class="desc-panel">
+                    <p>A warm, flaky butter croissant generously filled with smooth Nutella and lightly dusted with powdered sugar. A simple yet luxurious treat that pairs perfectly with any coffee.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Nutella Croissant',200,'https://simplyhomecooked.com/wp-content/uploads/2018/02/Nutella-croissants-recipe-3.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.mybakingaddiction.com/wp-content/uploads/2021/07/whole-fresh-strawberry-pie.jpg" alt="">
+                </div>
+                <p class="product-name">Strawberry Pie</p>
+                <div class="price">Rs.189 <span>Rs.199</span></div>
+                <div class="desc-panel">
+                    <p>A golden, buttery pie shell filled with sweet, glossy fresh strawberries set in a light gel. Served chilled with a dollop of whipped cream — pure summer on a plate.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Strawberry Pie',189,'https://www.mybakingaddiction.com/wp-content/uploads/2021/07/whole-fresh-strawberry-pie.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://thesoccermomblog.com/wp-content/uploads/2019/06/Orange-Creamsicle-Cheesecake-1.jpg" alt="">
+                </div>
+                <p class="product-name">Orange Cheesecake</p>
+                <div class="price">Rs.210 </div>
+                <div class="desc-panel">
+                    <p>A creamy, velvety cheesecake bursting with bright orange flavor on a crunchy biscuit base. Light, smooth, and utterly refreshing — a dessert that feels like sunshine in every bite.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Orange Cheesecake',210,'https://thesoccermomblog.com/wp-content/uploads/2019/06/Orange-Creamsicle-Cheesecake-1.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.chiselandfork.com/wp-content/uploads/2023/02/sizzling-brownie-1.jpg" alt="">
+                </div>
+                <p class="product-name">Sizzling Brownie</p>
+                <div class="price">Rs.250 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>A rich, fudgy chocolate brownie served sizzling hot on a cast iron plate, topped with a scoop of vanilla ice cream. The theatrical combo of hot and cold is absolutely irresistible.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Sizzling Brownie',250,'https://www.chiselandfork.com/wp-content/uploads/2023/02/sizzling-brownie-1.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.creationsbykara.com/wp-content/uploads/2019/04/Blueberry-Ice-Cream-018-2.jpg" alt="">
+                </div>
+                <p class="product-name">Blueberry Ice Cream</p>
+                <div class="price">Rs.199 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>Creamy, homemade-style blueberry ice cream loaded with real fruit pieces. Intensely flavored, beautifully purple, and cooling — a dessert that&#39;s as pretty as it is delicious.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Blueberry Ice Cream',199,'https://www.creationsbykara.com/wp-content/uploads/2019/04/Blueberry-Ice-Cream-018-2.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.healthy-delicious.com/wp-content/uploads/2021/08/mini-lemon-tarts-8.jpg" alt="">
+                </div>
+                <p class="product-name">Lemon Tart</p>
+                <div class="price">Rs.199 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>A delightful blend of tangy and sweet — a crisp, buttery pastry shell filled with smooth lemony custard. Finished with a light dusting of powdered sugar. Refreshing and elegant in every bite.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Lemon Tart',199,'https://www.healthy-delicious.com/wp-content/uploads/2021/08/mini-lemon-tarts-8.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+</body>
+</html>

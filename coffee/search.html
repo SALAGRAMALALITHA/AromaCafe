@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js"></script>
+    <title>Search - Aroma Cafe</title>
+    <style>
+        .search-header { margin-top: 120px; padding: 20px 7%; text-align: center; }
+        .search-header h1 { color: #2A1503; font-size: 2.5rem; margin-bottom: 10px; }
+        .search-query { color: #666; font-size: 1.2rem; margin-bottom: 8px; }
+        .result-count { color: #2A1503; font-weight: bold; margin-bottom: 30px; }
+        .no-results { text-align: center; padding: 60px 20px; color: #666; }
+        .no-results i { font-size: 80px; color: #2A1503; margin-bottom: 20px; opacity: 0.3; display: block; }
+        .back-to-home { text-align: center; margin-top: 30px; }
+        .back-to-home a { background-color: #2A1503; color: white; padding: 12px 30px; border-radius: 5px; text-decoration: none; display: inline-block; }
+        .back-to-home a:hover { background-color: #f3961c; color: #2a1503; }
+        /* Inline search bar on this page */
+        .page-search { display: flex; justify-content: center; margin: 20px 0; }
+        .page-search input { padding: 12px 18px; width: 340px; max-width: 80vw; font-size: 1rem; border: 2px solid #2a1503; border-radius: 8px 0 0 8px; outline: none; }
+        .page-search button { padding: 12px 20px; background: #2a1503; color: #fff; border: none; border-radius: 0 8px 8px 0; cursor: pointer; font-size: 1rem; }
+        .page-search button:hover { background: #f3961c; }
+    </style>
+</head>
+<body>
+    <header id="site-header"></header>
+    <section class="search-header">
+        <h1>Search Results</h1>
+        <div class="page-search">
+            <input type="text" id="inline-search" placeholder="Search products...">
+            <button onclick="doSearch(document.getElementById('inline-search').value)"><i class="fas fa-search"></i></button>
+        </div>
+        <div id="searchQueryDisplay" class="search-query"></div>
+        <div id="resultCount" class="result-count"></div>
+    </section>
+
+    <section class="menu" id="results">
+        <div id="resultsContainer" class="box-container"></div>
+    </section>
+
+    <div id="noResults" class="no-results" style="display:none;">
+        <i class="fas fa-search"></i>
+        <h2>No Products Found</h2>
+        <p>Sorry, we couldn't find any products matching your search.</p>
+        <div class="back-to-home"><a href="home.html">Back to Home</a></div>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script>
+        function displayResults(results, query) {
+            const queryDisplay = document.getElementById('searchQueryDisplay');
+            const resultCount = document.getElementById('resultCount');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const noResults = document.getElementById('noResults');
+
+            if (results.length > 0) {
+                queryDisplay.textContent = 'You searched for: "' + query + '"';
+                resultCount.textContent = 'Found ' + results.length + ' product' + (results.length !== 1 ? 's' : '');
+                resultsContainer.innerHTML = results.map(product => `
+                    <div class="box">
+                        <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" style="height:20rem;width:250px;object-fit:cover;">
+                        <p style="color:#2a1503;font-size:xx-large;margin-top:20px;">${escapeHtml(product.name)}</p>
+                        <div class="content">
+                            <h3>${escapeHtml(product.name)}</h3>
+                            <p style="margin-bottom:10px;color:#888;">${escapeHtml(product.category)}</p>
+                            <div class="price">Rs.${product.price}</div>
+                            <a href="#" class="btn" onclick="addToCart('${escapeHtml(product.name).replace(/'/g,"\\'")}',${product.price},'${escapeHtml(product.image)}');return false;">Add to Cart</a>
+                        </div>
+                    </div>
+                `).join('');
+                resultsContainer.style.display = '';
+                noResults.style.display = 'none';
+            } else {
+                queryDisplay.textContent = query ? 'You searched for: "' + query + '"' : '';
+                resultCount.textContent = '';
+                resultsContainer.style.display = 'none';
+                noResults.style.display = 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const results = JSON.parse(sessionStorage.getItem('searchResults') || '[]');
+            const query = sessionStorage.getItem('searchQuery') || '';
+            if (query) document.getElementById('inline-search').value = query;
+            displayResults(results, query);
+            sessionStorage.removeItem('searchResults');
+            sessionStorage.removeItem('searchQuery');
+        });
+
+        document.getElementById('inline-search').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') doSearch(this.value);
+        });
+    </script>
+</body>
+</html>

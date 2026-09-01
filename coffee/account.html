@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Aroma Cafe</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js" defer></script>
+
+    <style>
+        .account-wrap { max-width: 1000px; margin: 120px auto 60px; padding: 0 20px; }
+        .account-grid { display: grid; grid-template-columns: 220px 1fr; gap: 24px; }
+        @media (max-width: 750px) { .account-grid { grid-template-columns: 1fr; } }
+
+        .account-nav { background: #fff; border: var(--border); border-radius: 10px; overflow: hidden; height: fit-content; }
+        .account-nav button {
+            display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+            padding: 14px 18px; background: none; cursor: pointer; font-size: 1rem;
+            color: var(--primary-color); border-bottom: 1px solid #eee;
+        }
+        .account-nav button.active { background: var(--primary-color); color: #fff; }
+        .account-nav button:last-child { border-bottom: none; color: #cc0000; }
+
+        .account-panel { background: #fff; border: var(--border); border-radius: 10px; padding: 28px; display: none; }
+        .account-panel.active { display: block; }
+        .account-panel h2 { color: var(--primary-color); margin-bottom: 20px; font-size: 1.6rem; }
+
+        .field-row { margin-bottom: 16px; }
+        .field-row label { display: block; font-weight: 500; margin-bottom: 6px; color: var(--primary-color); }
+        .field-row input { width: 100%; max-width: 400px; padding: 10px 12px; border: 1.5px solid #ccc; border-radius: 7px; font-size: 1rem; }
+        .save-btn {
+            padding: 10px 24px; background: var(--primary-color); color: #fff; border: none;
+            border-radius: 7px; font-size: 1rem; cursor: pointer; margin-top: 6px;
+        }
+        .save-btn:hover { background: var(--hover-color); color: var(--primary-color); }
+        .saved-note { color: green; font-size: 0.9rem; margin-left: 12px; display: none; }
+
+        .order-card { border: var(--border); border-radius: 8px; padding: 16px; margin-bottom: 14px; }
+        .order-card .order-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+        .order-card .order-id { font-weight: 600; color: var(--primary-color); }
+        .order-card .order-date { color: #888; font-size: 0.9rem; }
+        .order-item-row { display: flex; justify-content: space-between; font-size: 0.92rem; padding: 4px 0; color: #444; }
+        .order-total { text-align: right; font-weight: 700; color: var(--primary-color); margin-top: 8px; border-top: 1px solid #eee; padding-top: 8px; }
+        .empty-state { text-align: center; color: #888; padding: 30px 10px; }
+    </style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<div class="account-wrap">
+  <div class="account-grid">
+
+    <nav class="account-nav">
+      <button class="active" data-panel="profile"><i class="fas fa-user"></i> Profile</button>
+      <button data-panel="addresses"><i class="fas fa-location-dot"></i> Addresses</button>
+      <button data-panel="orders"><i class="fas fa-box"></i> Order History</button>
+      <button onclick="logout()"><i class="fas fa-right-from-bracket"></i> Logout</button>
+    </nav>
+
+    <div>
+      <!-- ============== PROFILE ============== -->
+      <section class="account-panel active" id="panel-profile">
+        <h2>My Profile</h2>
+        <form id="profileForm">
+          <div class="field-row">
+            <label for="p-name">Full Name</label>
+            <input type="text" id="p-name" required>
+          </div>
+          <div class="field-row">
+            <label for="p-email">Email Address</label>
+            <input type="email" id="p-email" style="text-transform: none;">
+            <small style="color:#888;display:block;margin-top:4px;">Changing this updates your login email too.</small>
+          </div>
+          <div class="field-row">
+            <label for="p-phone">Phone Number</label>
+            <input type="tel" id="p-phone" required>
+          </div>
+          <button type="submit" class="save-btn">Save Changes</button>
+          <span class="saved-note" id="profileSaved">Saved!</span>
+        </form>
+      </section>
+
+      <!-- ============== ADDRESSES ============== -->
+      <section class="account-panel" id="panel-addresses">
+        <h2>Saved Addresses</h2>
+        <div id="addressList"></div>
+
+        <div class="add-address-btn" id="showAddAddress">+ Add a New Address</div>
+
+        <form class="address-form" id="addressForm">
+          <input type="hidden" id="addr-id">
+          <div class="address-form-grid">
+            <div>
+              <label for="addr-label">Label (e.g. Home, Work)</label>
+              <input type="text" id="addr-label" required>
+            </div>
+            <div>
+              <label for="addr-city">City</label>
+              <input type="text" id="addr-city" required>
+            </div>
+            <div class="full">
+              <label for="addr-line1">Address Line 1</label>
+              <input type="text" id="addr-line1" required>
+            </div>
+            <div class="full">
+              <label for="addr-line2">Address Line 2 (optional)</label>
+              <input type="text" id="addr-line2">
+            </div>
+            <div>
+              <label for="addr-state">State</label>
+              <input type="text" id="addr-state" required>
+            </div>
+            <div>
+              <label for="addr-pincode">Pincode</label>
+              <input type="text" id="addr-pincode" required>
+            </div>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="addr-default">
+            <label for="addr-default">Set as default address</label>
+          </div>
+          <div class="address-form-actions">
+            <button type="submit" class="save-btn">Save Address</button>
+            <button type="button" class="cancel-btn" id="cancelAddress">Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ============== ORDER HISTORY ============== -->
+      <section class="account-panel" id="panel-orders">
+        <h2>Order History</h2>
+        <div id="orderList"></div>
+      </section>
+    </div>
+
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', async function () {
+
+  let user = await getCurrentUser();
+  if (!user) {
+    window.location.href = 'loginpage.html';
+    return;
+  }
+
+  /* ---------- Panel / nav switching ---------- */
+  document.querySelectorAll('.account-nav button[data-panel]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.account-nav button[data-panel]').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.account-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.panel).classList.add('active');
+    });
+  });
+
+  /* ================= PROFILE ================= */
+  function fillProfile() {
+    document.getElementById('p-name').value = user.name || '';
+    document.getElementById('p-email').value = user.email || '';
+    document.getElementById('p-phone').value = user.phone || '';
+  }
+  fillProfile();
+
+  document.getElementById('profileForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    setButtonLoading(submitBtn, true, 'Saving…');
+    try {
+      user = await updateUserProfile({
+        name: document.getElementById('p-name').value.trim(),
+        phone: document.getElementById('p-phone').value.trim(),
+        email: document.getElementById('p-email').value.trim()
+      });
+      const note = document.getElementById('profileSaved');
+      note.style.display = 'inline';
+      setTimeout(() => note.style.display = 'none', 2000);
+    } catch (err) {
+      showToast('Could not save profile: ' + err.message, 'error');
+    } finally {
+      setButtonLoading(submitBtn, false);
+    }
+  });
+
+  /* ================= ADDRESSES ================= */
+  async function renderAddresses() {
+    const list = document.getElementById('addressList');
+    list.innerHTML = '<p class="empty-state">Loading addresses…</p>';
+
+    const fresh = await getCurrentUser();
+    user = fresh;
+    const addresses = fresh.addresses || [];
+
+    if (!addresses.length) {
+      list.innerHTML = '<p class="empty-state">No saved addresses yet.</p>';
+      return;
+    }
+
+    list.innerHTML = addresses.map(a => `
+      <div class="address-card ${a.isDefault ? 'default' : ''}">
+        ${a.isDefault ? '<span class="default-badge">Default</span>' : ''}
+        <strong>${a.label}</strong><br>
+        ${a.line1}${a.line2 ? ', ' + a.line2 : ''}<br>
+        ${a.city}, ${a.state} - ${a.pincode}
+        <div class="addr-actions">
+          <a data-edit="${a._id}">Edit</a>
+          <a data-delete="${a._id}">Delete</a>
+          ${!a.isDefault ? `<a data-default="${a._id}">Set as default</a>` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    list.querySelectorAll('[data-edit]').forEach(el =>
+      el.addEventListener('click', () => openAddressForm(el.dataset.edit)));
+    list.querySelectorAll('[data-delete]').forEach(el =>
+      el.addEventListener('click', async () => {
+        if (confirm('Delete this address?')) {
+          await deleteAddress(el.dataset.delete);
+          renderAddresses();
+        }
+      }));
+    list.querySelectorAll('[data-default]').forEach(el =>
+      el.addEventListener('click', async () => {
+        await updateAddress(el.dataset.default, { isDefault: true });
+        renderAddresses();
+      }));
+  }
+  await renderAddresses();
+
+  const addressForm = document.getElementById('addressForm');
+
+  async function openAddressForm(addressId) {
+    addressForm.classList.add('active');
+    document.getElementById('showAddAddress').style.display = 'none';
+
+    if (addressId) {
+      const fresh = await getCurrentUser();
+      const a = fresh.addresses.find(x => x._id === addressId);
+      document.getElementById('addr-id').value = a._id;
+      document.getElementById('addr-label').value = a.label;
+      document.getElementById('addr-line1').value = a.line1;
+      document.getElementById('addr-line2').value = a.line2 || '';
+      document.getElementById('addr-city').value = a.city;
+      document.getElementById('addr-state').value = a.state;
+      document.getElementById('addr-pincode').value = a.pincode;
+      document.getElementById('addr-default').checked = !!a.isDefault;
+    } else {
+      addressForm.reset();
+      document.getElementById('addr-id').value = '';
+    }
+  }
+
+  function closeAddressForm() {
+    addressForm.classList.remove('active');
+    document.getElementById('showAddAddress').style.display = 'block';
+    addressForm.reset();
+  }
+
+  document.getElementById('showAddAddress').addEventListener('click', () => openAddressForm(null));
+  document.getElementById('cancelAddress').addEventListener('click', closeAddressForm);
+
+  addressForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const id = document.getElementById('addr-id').value;
+    const data = {
+      label: document.getElementById('addr-label').value.trim(),
+      line1: document.getElementById('addr-line1').value.trim(),
+      line2: document.getElementById('addr-line2').value.trim(),
+      city: document.getElementById('addr-city').value.trim(),
+      state: document.getElementById('addr-state').value.trim(),
+      pincode: document.getElementById('addr-pincode').value.trim(),
+      isDefault: document.getElementById('addr-default').checked
+    };
+
+    setButtonLoading(submitBtn, true, 'Saving…');
+    try {
+      if (id) {
+        await updateAddress(id, data);
+      } else {
+        await addAddress(data);
+      }
+      closeAddressForm();
+      renderAddresses();
+    } catch (err) {
+      showToast('Could not save address: ' + err.message, 'error');
+    } finally {
+      setButtonLoading(submitBtn, false);
+    }
+  });
+
+  /* ================= ORDER HISTORY ================= */
+  async function renderOrders() {
+    const list = document.getElementById('orderList');
+    list.innerHTML = '<p class="empty-state">Loading orders…</p>';
+
+    const orders = await getOrders();
+
+    if (!orders.length) {
+      list.innerHTML = '<p class="empty-state">No orders yet — go treat yourself to some coffee ☕</p>';
+      return;
+    }
+
+    list.innerHTML = orders.map(o => `
+      <div class="order-card">
+        <div class="order-top">
+          <span class="order-id">Order #${o._id.slice(-6).toUpperCase()}</span>
+          <span class="status-badge status-${o.status}">${o.status}</span>
+          <span class="order-date">${new Date(o.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+        </div>
+        ${orderTrackerHtml(o.status)}
+        ${o.items.map(i => `
+          <div class="order-item-row">
+            <span>${i.name} × ${i.qty}</span>
+            <span>Rs.${i.price * i.qty}</span>
+          </div>
+        `).join('')}
+        <div class="order-total">Total: Rs.${o.total}</div>
+      </div>
+    `).join('');
+  }
+
+  /* Builds the horizontal progress tracker; skipped for cancelled orders */
+  function orderTrackerHtml(status) {
+    if (status === 'cancelled') {
+      return `<p style="color:#842029;font-size:0.85rem;margin:10px 0;">This order was cancelled.</p>`;
+    }
+    const stages = ['placed', 'shipped', 'delivered'];
+    const currentIdx = stages.indexOf(status);
+    return `
+      <div class="order-tracker">
+        ${stages.map((stage, i) => `
+          <div class="step ${i <= currentIdx ? 'done' : ''}">${stage}</div>
+        `).join('')}
+      </div>`;
+  }
+  await renderOrders();
+
+});
+</script>
+
+</body>
+</html>

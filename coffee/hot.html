@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js"></script>
+    <title>Hot Beverages - Aroma Cafe</title>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <section class="menu" id="menu" style="margin-top:100px;">
+        <h1 class="heading">Hot Beverages</h1>
+        <div class="box-container">
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://img.freepik.com/premium-photo/hot-coffee-capuccino-cup-with-latte-art-wood-table-cafe_778722-16.jpg" alt="">
+                </div>
+                <p class="product-name">Latte Coffee</p>
+                <div class="price">Rs.200 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>Indulge in our rich and creamy Latte Coffee, crafted with a perfect blend of smooth espresso and steamed milk. Each sip offers a balanced harmony of bold coffee flavor and velvety texture, topped with a light layer of foam.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Latte Coffee',200,'https://img.freepik.com/premium-photo/hot-coffee-capuccino-cup-with-latte-art-wood-table-cafe_778722-16.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.frostymelts.co.za/wp-content/uploads/2022/06/Frosty-Melts-Cappuccino.jpg" alt="">
+                </div>
+                <p class="product-name">Cappuccino</p>
+                <div class="price">Rs.250 </div>
+                <div class="desc-panel">
+                    <p>A robust shot of espresso, perfectly balanced with steamed milk and topped with a generous layer of frothy milk foam. Served in a traditional 6-ounce cup with a sprinkle of cocoa or cinnamon on top.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Cappuccino',250,'https://www.frostymelts.co.za/wp-content/uploads/2022/06/Frosty-Melts-Cappuccino.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://media.istockphoto.com/id/174684628/photo/pouring-fresh-coffee.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=pXOkO9bhWVKA7s4JGtvz9aPMZzkF24noXPdXlMkTQ_A=" alt="">
+                </div>
+                <p class="product-name">Americano</p>
+                <div class="price">Rs.270 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>Enjoy the simplicity and bold flavor of our Americano. Made with a single or double shot of our finest espresso, this coffee offers a smooth and robust taste. Perfect for those who prefer a lighter, longer drink.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Americano',270,'https://media.istockphoto.com/id/174684628/photo/pouring-fresh-coffee.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=pXOkO9bhWVKA7s4JGtvz9aPMZzkF24noXPdXlMkTQ_A=');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.crabtreekitchen.com/media/catalog/product/cache/0fcc925f6929e143fbbf0b86b4ef8725/d/r/drinking_chocolate_square_image.jpeg" alt="">
+                </div>
+                <p class="product-name">Hot Chocolate</p>
+                <div class="price">Rs.300 </div>
+                <div class="desc-panel">
+                    <p>Treat yourself to the ultimate comfort with our decadent Hot Chocolate. Made with high-quality cocoa and steamed milk, rich, creamy, and perfectly sweet. Topped with whipped cream or marshmallows.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Hot Chocolate',300,'https://www.crabtreekitchen.com/media/catalog/product/cache/0fcc925f6929e143fbbf0b86b4ef8725/d/r/drinking_chocolate_square_image.jpeg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://somuchfoodblog.com/wp-content/uploads/2022/11/irish-coffee6.jpg" alt="">
+                </div>
+                <p class="product-name">Irish Coffee</p>
+                <div class="price">Rs.150 <span>Rs.249</span></div>
+                <div class="desc-panel">
+                    <p>The perfect blend of warmth and flavor — freshly brewed hot coffee, smooth Irish whiskey, a touch of sugar, and a layer of lightly whipped cream. An exquisite after-dinner treat.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Irish Coffee',150,'https://somuchfoodblog.com/wp-content/uploads/2022/11/irish-coffee6.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://t3.ftcdn.net/jpg/04/79/36/52/360_F_479365241_t5PEjmcB9EMF8nbNBzFrmbXPYNggHDNZ.jpg" alt="">
+                </div>
+                <p class="product-name">Classic Filter Coffee</p>
+                <div class="price">Rs.120 <span>Rs.150</span></div>
+                <div class="desc-panel">
+                    <p>Savor the pure, clean taste of our Filter Coffee. Using the finest quality beans through a precise drip process, ensuring a consistently smooth and flavorful cup. Enjoy it black or with a splash of milk.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Classic Filter Coffee',120,'https://t3.ftcdn.net/jpg/04/79/36/52/360_F_479365241_t5PEjmcB9EMF8nbNBzFrmbXPYNggHDNZ.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+</body>
+</html>

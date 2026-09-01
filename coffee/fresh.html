@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js"></script>
+    <title>Fresh Refreshments - Aroma Cafe</title>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <section class="menu" id="menu" style="margin-top:100px;">
+        <h1 class="heading">Fresh Refreshments</h1>
+        <div class="box-container">
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.thecocktaildb.com/images/media/drink/3z6xdi1589574603.jpg" alt="">
+                </div>
+                <p class="product-name">Lemon Mojito</p>
+                <div class="price">Rs.120 </div>
+                <div class="desc-panel">
+                    <p>A refreshing pairing of tangy lemon and crisp sweet mint. This is an easy drink that is perfect for sunny days and casual gatherings. Perfectly balanced and endlessly refreshing.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Lemon Mojito',120,'https://www.thecocktaildb.com/images/media/drink/3z6xdi1589574603.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.thecocktaildb.com/images/media/drink/tquyyt1451299548.jpg" alt="">
+                </div>
+                <p class="product-name">Strawberry Mojito</p>
+                <div class="price">Rs.160 <span>Rs.199</span></div>
+                <div class="desc-panel">
+                    <p>Fresh strawberries muddled with mint leaves, lime juice, and a splash of soda. Vibrant, fruity, and incredibly refreshing — a wonderful choice for summer.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Strawberry Mojito',160,'https://www.thecocktaildb.com/images/media/drink/tquyyt1451299548.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Syzygium_cumini.jpg/320px-Syzygium_cumini.jpg" alt="">
+                </div>
+                <p class="product-name">Jamun Shots</p>
+                <div class="price">Rs.140 </div>
+                <div class="desc-panel">
+                    <p>A refreshing summer drink made with fresh Jamun (Java Plums), mint leaves, black salt, sugar, and lemon juice. Tangy, earthy, and deeply satisfying.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Jamun Shots',140,'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Syzygium_cumini.jpg/320px-Syzygium_cumini.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.eitanbernath.com/wp-content/uploads/2019/07/Frozen-Mango-Margarita-1-LOW-RES.jpg" alt="">
+                </div>
+                <p class="product-name">Mango Margarita</p>
+                <div class="price">Rs.299 </div>
+                <div class="desc-panel">
+                    <p>Frozen ripe mangoes blended with orange, lime, and agave. Cold, sweet, tangy, and subtly spiced. Perfect for warm weather and tropical vibes.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Mango Margarita',299,'https://www.eitanbernath.com/wp-content/uploads/2019/07/Frozen-Mango-Margarita-1-LOW-RES.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?w=400" alt="">
+                </div>
+                <p class="product-name">Watermelon Mojito</p>
+                <div class="price">Rs.150 </div>
+                <div class="desc-panel">
+                    <p>Super refreshing — made with fresh watermelon, mint, lime juice, and a splash of fizzy club soda. Perfect for patio days and lazy summer afternoons.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Watermelon Mojito',150,'https://images.unsplash.com/photo-1603569283847-aa295f0d016a?w=400');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?w=400" alt="">
+                </div>
+                <p class="product-name">Mixed Mojito</p>
+                <div class="price">Rs.180 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>A vibrant mixed berry mojito combining raspberries, blackberries, mint, lime, and soda. A riot of flavors in every sip — perfect for spring and summer gatherings.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Mixed Mojito',180,'https://images.unsplash.com/photo-1546171753-97d7676e4602?w=400');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+</body>
+</html>

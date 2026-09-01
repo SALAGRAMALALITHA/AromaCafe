@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="cf.css">
+    <script src="c.js"></script>
+    <title>Cold Beverages - Aroma Cafe</title>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <section class="menu" id="menu" style="margin-top:100px;">
+        <h1 class="heading">Cold Beverages</h1>
+        <div class="box-container">
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.recipetineats.com/wp-content/uploads/2023/06/Affogato_0.jpg" alt="">
+                </div>
+                <p class="product-name">Affogato</p>
+                <div class="price">Rs.199 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>A classic Italian dessert-drink — a shot of hot espresso poured over a scoop of creamy vanilla gelato. The contrast of hot and cold, bitter and sweet, makes it an irresistible indulgence.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Affogato',199,'https://www.recipetineats.com/wp-content/uploads/2023/06/Affogato_0.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://i0.wp.com/recipehippie.com/wp-content/uploads/2020/11/cranberry-coffee-8.jpeg?fit=1080%2C1620&amp;ssl=1" alt="">
+                </div>
+                <p class="product-name">Cranberry Iced Coffee</p>
+                <div class="price">Rs.250 </div>
+                <div class="desc-panel">
+                    <p>A bold shot of espresso over ice, blended with tangy cranberry and a hint of citrus. Refreshing, fruity, and perfectly balanced for a summer afternoon pick-me-up.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Cranberry Iced Coffee',250,'https://i0.wp.com/recipehippie.com/wp-content/uploads/2020/11/cranberry-coffee-8.jpeg?fit=1080%2C1620&amp;ssl=1');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://madaboutkitchen.in/wp-content/uploads/2020/04/Dolgona-Coffee-.jpg" alt="">
+                </div>
+                <p class="product-name">Dalgona Coffee</p>
+                <div class="price">Rs.180 </div>
+                <div class="desc-panel">
+                    <p>The viral sensation — whipped instant coffee folded into a fluffy cloud and spooned over chilled milk. Stir it yourself and watch the magic happen with every sip.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Dalgona Coffee',180,'https://madaboutkitchen.in/wp-content/uploads/2020/04/Dolgona-Coffee-.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.justonecookbook.com/wp-content/uploads/2016/11/Cold-Brew-Coffee-II-600x900.jpg" alt="">
+                </div>
+                <p class="product-name">Cold Brew Coffee</p>
+                <div class="price">Rs.199 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>Slow-steeped for 12+ hours in cold water, our cold brew delivers a smooth, naturally sweet, and low-acidity coffee experience. Rich, bold, and incredibly refreshing served over ice.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Cold Brew Coffee',199,'https://www.justonecookbook.com/wp-content/uploads/2016/11/Cold-Brew-Coffee-II-600x900.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://cheatdaydesign.com/wp-content/uploads/2023/03/Nitro-Cold-Brew-Tall.jpg.webp" alt="">
+                </div>
+                <p class="product-name">Nitro Coffee</p>
+                <div class="price">Rs.160 <span>Rs.199</span></div>
+                <div class="desc-panel">
+                    <p>Our cold brew infused with nitrogen for a silky-smooth, creamy texture with a cascading effect right in the glass. Naturally sweet, no sugar needed — a unique coffee experience unlike any other.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Nitro Coffee',160,'https://cheatdaydesign.com/wp-content/uploads/2023/03/Nitro-Cold-Brew-Tall.jpg.webp');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+
+            <div class="box" style="position:relative;overflow:hidden;">
+                <div class="image-wrap">
+                    <img src="https://www.cookwithmanali.com/wp-content/uploads/2022/07/Iced-Mocha.jpg" alt="">
+                </div>
+                <p class="product-name">Iced Mocha</p>
+                <div class="price">Rs.199 <span>Rs.299</span></div>
+                <div class="desc-panel">
+                    <p>Espresso meets rich chocolate syrup and cold milk, poured over ice and topped with whipped cream. A decadent treat for coffee-chocolate lovers who crave something cool and indulgent.</p>
+                </div>
+                <a href="#" class="btn add-to-cart" onclick="addToCart('Iced Mocha',199,'https://www.cookwithmanali.com/wp-content/uploads/2022/07/Iced-Mocha.jpg');return false;">Add to Cart</a>
+                <button type="button" class="btn show-desc" onclick="showDescription(this)">Description</button>
+            </div>
+    
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+</body>
+</html>
